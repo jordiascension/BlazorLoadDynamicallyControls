@@ -1,4 +1,5 @@
 ﻿@page "/"
+@rendermode @(new InteractiveServerRenderMode(prerender: false))
 @using ControlSampleContract
 
 @inject IControlContract controlContract
@@ -7,19 +8,14 @@
 
 <h1>Hello, world!</h1>
 
-Welcome to your new app.
-
-<button class="btn btn-primary" @onclick="GetMessage">Click me</button>
+<p> The TextBox control loaded with reflection is called: @GetControlName()</p>
 
 @code {
     private int currentCount = 0;
-
-    private void GetMessage()
+    
+    RenderFragment GetControlName()
     {
-       
-
-
-        Console.WriteLine($"Second plugin instance '{controlContract?.GetControlName()}'.");
+        return @<em>@controlContract?.GetControlName()</em>;
     }
 }
 

@@ -1,7 +1,6 @@
 using BlazorReflectionSample.Components;
 using BlazorReflectionSample.Loaders;
 
-using ControlSampleContract;
 
 using McMaster.NETCore.Plugins;
 

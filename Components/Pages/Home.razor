@@ -1,6 +1,8 @@
 ﻿@page "/"
 @rendermode @(new InteractiveServerRenderMode(prerender: false))
-@using ControlSampleContract
+
+@using BaseInterfaces
+@using LabelControl
 
 @inject IControlContract controlContract
 
@@ -10,12 +12,31 @@
 
 <p> The TextBox control loaded with reflection is called: @GetControlName()</p>
 
+@if (customInputFragment != null)
+{
+    @customInputFragment
+}
+else
+{
+    <p>Loading...</p>
+}
+
+
 @code {
     private int currentCount = 0;
-    
+    private RenderFragment customInputFragment;
+    private List<dynamic> formelemlist = new List<dynamic>();
+
     RenderFragment GetControlName()
     {
         return @<em>@controlContract?.GetControlName()</em>;
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        // Await the asynchronous call to get the RenderFragment
+        LabelControlImpl labelControlImpl = new LabelControlImpl();
+        customInputFragment = await labelControlImpl.CreateControls();
     }
 }
 

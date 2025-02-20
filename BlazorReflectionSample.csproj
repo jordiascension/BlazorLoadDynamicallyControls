@@ -15,7 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ControlSampleContract\ControlSampleContract.csproj" />
+    <ProjectReference Include="..\LabelControl\LabelControl.csproj" />
   </ItemGroup>
 
   <ItemGroup>

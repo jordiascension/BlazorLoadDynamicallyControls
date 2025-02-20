@@ -1,4 +1,6 @@
-﻿using ControlSampleContract;
+﻿
+using BaseInterfaces;
+
 using McMaster.NETCore.Plugins;
 using System.Reflection;
 

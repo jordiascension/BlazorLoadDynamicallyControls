@@ -1,6 +1,8 @@
 using BlazorReflectionSample.Components;
 using BlazorReflectionSample.Loaders;
 
+using LabelControl;
+
 
 using McMaster.NETCore.Plugins;
 
@@ -22,7 +24,12 @@ namespace BlazorReflectionSample
 
             DynamicDllLoader.LoadExternalAssemblies(builder);
 
+            builder.Services.AddSingleton<WebRender>();
+            builder.Services.AddControl();
+
             var app = builder.Build();
+
+           
 
             // Configure the HTTP request pipeline.
             if (!app.Environment.IsDevelopment())
